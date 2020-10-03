@@ -2,31 +2,28 @@
 echo "Welcome to flip coin Combination"
 
 read -p "Enter no. of times to flip coin " num
-TT=0
-HH=0
+TTT=0
+HHH=0
 i=0
 
-while [[ $i -lt num ]]
+while [[ $i -lt $((num)) ]]
 do
 	random1=$((RANDOM%2))
 	random2=$((RANDOM%2))
-	if [[ $(($random1)) -eq 0 && $(($random2)) -eq 0 ]]
+	random3=$((RANDOM%2))
+	if [[ $(($random1)) -eq 0 && $(($random2)) -eq 0 && $(($random3)) -eq 0 ]]
 	then
-        echo "Doublet Head "
-			((HH++))
-	elif [[ $(($random1)) -eq 1 && $(($random2)) -eq 1 ]]
+        echo "Triplet Head "
+			((HHH++))
+	elif [[ $(($random1)) -eq 1 && $(($random2)) -eq 1 && $(($random3)) -eq 1 ]]
 	then
-        echo "Doublet Tail "
-			((TT++))
-	else
-			echo "It is Tail and Head"
-			((T++))
-			((H++))
+        echo "Triplet Tail "
+			((TTT++))
 	fi
 	((i++))
 done
 
-PercentageofHH=$(( (HH*100)/num ))
-PercentageofTT=$(( (TT*100)/num ))
-echo "Doublet combination of HH and TT are $HH & $TT"
-echo "% of Doublet head and Doublet tail are $PercentageofHH % & $PercentageofTT % "
+PercentageofHHH=$(( (HHH*100)/num ))
+PercentageofTTT=$(( (TTT*100)/num ))
+echo "Triplet combination of HEAD and TAIL are $HHH & $TTT"
+echo "% of Triplet head and Doublet tail are $PercentageofHHH % & $PercentageofTTT % "
