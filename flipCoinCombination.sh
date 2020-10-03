@@ -19,9 +19,50 @@ do
 	then
         echo "Triplet Tail "
 			((TTT++))
+	elif [[$(($random1)) -eq 0 && $(($random2)) -eq 0 && $(($random3)) -eq 1 ]]
+	then
+		echo "Doublet head and singlet tail "
+		((HH++))
+		((T++))
+	elif [[ $(($random1)) -eq 1 && $(($random2)) -eq 1 && $(($random3)) -eq 0 ]]
+        then
+                echo "Doublet tail and Singlet head "
+                ((TT++))
+                ((H++))
+	elif [[ $(($random1)) -eq 1 && $(($random2)) -eq 0 && $(($random3)) -eq 0 ]]
+        then
+                echo "Doublet head and Singlet tail "
+                ((HH++))
+                ((T++))
+
+	elif [[ $(($random1)) -eq 0 && $(($random2)) -eq 1 && $(($random3)) -eq 1 ]]
+        then
+                echo "Doublet tail and Singlet head "
+                ((TT++))
+                ((H++))
+	elif [[ $(($random1)) -eq 1 && $(($random2)) -eq 0 && $(($random3)) -eq 1 ]]
+        then
+                echo "Doublet tail and Singlet head "
+                ((TT++))
+                ((H++))
+	elif [[ $(($random1)) -eq 0 && $(($random2)) -eq 1 && $(($random3)) -eq 0 ]]
+        then
+                echo "Doublet head and Singlet tail "
+                ((HH++))
+                ((T++))
 	fi
 	((i++))
 done
+
+PercentageofH=$(( (H*100)/num ))
+PercentageofT=$(( (T*100)/num ))
+echo "Singlet combination of H and T are $H & $T"
+echo "% of head and tail are $PercentageofH % & $PercentageofT % "
+
+PercentageofHH=$(( (HH*100)/num ))
+PercentageofTT=$(( (TT*100)/num ))
+echo "Doublet combination of HH and TT are $HH & $TT"
+echo "% of Doublet head and Doublet tail are $PercentageofHH % & $PercentageofTT % "
 
 PercentageofHHH=$(( (HHH*100)/num ))
 PercentageofTTT=$(( (TTT*100)/num ))
